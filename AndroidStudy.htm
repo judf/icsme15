@@ -1,0 +1,915 @@
+﻿<!DOCTYPE html>
+<!-- saved from url=(0053)http://www.dimap.ufrn.br/~neliocacho/csharpstudy.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" xml:lang="pt-br">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Android Study </title>
+    <script type="text/javascript" src="./CSharpJavaStudy_files/jquery.min.js"></script>
+    <style type="text/css"></style>
+    <script type="text/javascript">
+        $(function () {
+            /* For zebra striping */
+            $("table tr:nth-child(odd)").addClass("odd-row");
+            /* For cell text alignment */
+            $("table td:first-child, table th:first-child").addClass("first");
+            /* For removing the last border */
+            $("table td:last-child, table th:last-child").addClass("last");
+        });
+    </script>
+    <style type="text/css">
+        html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td
+        {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            outline: 0;
+            font-size: 100%;
+            vertical-align: baseline;
+            background: transparent;
+        }
+        
+        body
+        {
+            font-family: arial, helvetica, freesans, sans-serif;
+            font-size: 100%;
+            color: #333;
+            background-color: #ddd;
+        }
+        
+        .box
+        {
+            position: relative;
+            width: 65%;
+            max-width: 750px;
+            padding: 50px;
+            margin: 6% auto;
+            background-color: #fff;
+            -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+            -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+        }
+        
+        .box:before, .box:after
+        {
+            position: absolute;
+            width: 40%;
+            height: 10px;
+            content: ' ';
+            left: 12px;
+            bottom: 12px;
+            background: transparent;
+            -webkit-transform: skew(-5deg) rotate(-4deg);
+            -moz-transform: skew(-5deg) rotate(-4deg);
+            -ms-transform: skew(-5deg) rotate(-4deg);
+            -o-transform: skew(-5deg) rotate(-4deg);
+            transform: skew(-5deg) rotate(-4deg);
+            -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            -moz-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            z-index: -1;
+        }
+        
+        .box:after
+        {
+            left: auto;
+            right: 12px;
+            -webkit-transform: skew(5deg) rotate(4deg);
+            -moz-transform: skew(5deg) rotate(4deg);
+            -ms-transform: skew(5deg) rotate(4deg);
+            -o-transform: skew(5deg) rotate(4deg);
+            transform: skew(5deg) rotate(4deg);
+        }
+        
+        table
+        {
+            overflow: hidden;
+            border: 1px solid #d3d3d3;
+            background: #fefefe;
+            margin: 5% auto 0;
+            -moz-border-radius: 5px; /* FF1+ */
+            -webkit-border-radius: 5px; /* Saf3-4 */
+            border-radius: 5px;
+            -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+            -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        th, td
+        {
+            padding: 18px 28px 18px;
+            text-align: center;
+        }
+        
+        th
+        {
+            padding-top: 22px;
+            text-shadow: 1px 1px 1px #fff;
+            background: #e8eaeb;
+        }
+        
+        td
+        {
+            border-top: 1px solid #e0e0e0;
+            border-right: 1px solid #e0e0e0;
+        }
+        
+        tr.odd-row td
+        {
+            background: #f6f6f6;
+        }
+        
+        td.first, th.first
+        {
+            text-align: left;
+        }
+        
+        td.last
+        {
+            border-right: none;
+        }
+        
+        td
+        {
+            background: -moz-linear-gradient(100% 25% 90deg, #fefefe, #f9f9f9);
+            background: -webkit-gradient(linear, 0% 0%, 0% 25%, from(#f9f9f9), to(#fefefe));
+        }
+        
+        tr.odd-row td
+        {
+            background: -moz-linear-gradient(100% 25% 90deg, #f6f6f6, #f1f1f1);
+            background: -webkit-gradient(linear, 0% 0%, 0% 25%, from(#f1f1f1), to(#f6f6f6));
+        }
+        
+        th
+        {
+            background: -moz-linear-gradient(100% 20% 90deg, #e8eaeb, #ededed);
+            background: -webkit-gradient(linear, 0% 0%, 0% 20%, from(#ededed), to(#e8eaeb));
+        }
+        
+        tr
+        {
+            background: #fbf8e9;
+            -o-transition: all 0.1s ease-in-out;
+            -webkit-transition: all 0.1s ease-in-out;
+            -moz-transition: all 0.1s ease-in-out;
+            -ms-transition: all 0.1s ease-in-out;
+            transition: all 0.1s ease-in-out;
+        }
+        
+        tr:first-child th.first
+        {
+            -moz-border-radius-topleft: 5px;
+            -webkit-border-top-left-radius: 5px; /* Saf3-4 */
+        }
+        
+        tr:first-child th.last
+        {
+            -moz-border-radius-topright: 5px;
+            -webkit-border-top-right-radius: 5px; /* Saf3-4 */
+        }
+        
+        tr:last-child td.first
+        {
+            -moz-border-radius-bottomleft: 5px;
+            -webkit-border-bottom-left-radius: 5px; /* Saf3-4 */
+        }
+        
+        tr:last-child td.last
+        {
+            -moz-border-radius-bottomright: 5px;
+            -webkit-border-bottom-right-radius: 5px; /* Saf3-4 */
+        }
+        
+        .apps
+        {
+            position: absolute;
+            display: block;
+            -webkit-transform: rotate(-90deg);
+            -moz-transform: rotate(-90deg);
+            filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+            padding-bottom: 50px;
+        }
+        
+        #tools ul
+        {
+            padding: 0px;
+            margin: 0px;
+            background-color: #EDEDED;
+            list-style: none;
+        }
+        
+        #tools ul li
+        {
+            display: inline;
+        }
+        
+        #tools ul li a
+        {
+            padding: 2px 20px;
+            display: inline-block; /* visual do link */
+            background-color: #EDEDED;
+            color: #333;
+            text-decoration: none;
+            border-bottom: 3px solid #EDEDED;
+        }
+        
+        #tools ul li a:hover
+        {
+            background-color: #D6D6D6;
+            color: #6D6D6D;
+            border-bottom: 3px solid #EA0000;
+        }
+    </style>
+</head>
+<body>
+    <div id="content" class="box">
+        <div id="title" align="center" style="margin-bottom: 70px;">
+            <span style="font-weight: bold; font-size: 30px;">How Does Exception Handling Behavior
+                Evolve? An</br>
+                Exploratory Study in Android Applications</span>
+        </div>
+        <div id="authors" style="display: table-row;">
+            <div id="authors1" align="center" style="display: table-cell; width: 400px;">
+                Juliana Oliveira and Nelio Cacho,</br>
+             
+                Informatics Department
+                <br>
+                Federal University of Rio Grande do Norte<br>
+                Natal, Brazil
+                <br>
+                Email: http://www.michaelshell.org/contact.html
+            </div>
+            <div id="authors2" align="center" style="display: table-cell;">
+                Deise Miranda, Thaisa Mirely, Fernando Castor
+                <br>
+                Informatics Center
+                <br>
+                Federal University of Pernambuco
+                <br>
+                Recife, Brazil
+                <br>
+                Email: {dmb3,tmbs2,castorg}@cin.ufpe.br
+            </div>
+        </div>
+        <div id="abstract" style="margin-top: 50px; text-align: justify;">
+            <p style="font-weight: bold; font-size: 16px; margin-bottom: 10px;">
+                ABSTRACT</p>
+            Android applications are increasingly used in mobile
+			devices. In July 2013 the Google Play store reached 50
+			billion app downloads since its creation. Android apps are
+			similar to regular Java desktop applications, but with important
+			differences. In particular, in Android apps it is commonplace to
+			use late-binding mechanisms that allow components to interact.
+			These late-binding mechanisms can end their execution signaling
+			an exception. However, there is still little empirical knowledge
+			about the impact that the adoption of these mechanisms has on
+			software robustness. This paper address this gap by presenting
+			an empirical study aimed at understanding the relationship
+			between changes in Android programs and their robustness. In
+			particular, we evaluated how the use of late-binding mechanisms
+			and exceptional code were related to exception handling faults.
+			We applied a change impact analysis and a control flow analysis
+			in 112 versions of 16 Android programs. The results showed
+			that: (i) most of the problems hindering software robustness
+			in those programs are caused by changes in the normal code,
+			(ii) many potential faults were introduced even when improving
+			exception handling in Android applications, and (iii) faults are
+			often facilitated by the massive use of unchecked exceptions.
+			Moreover, we present a series of change scenarios that negatively
+			impact program robustness.
+        </div>
+        <table cellspacing="0">
+            <tbody>
+                <tr class="odd-row">
+                    <th class="first">
+                    </th>
+                    <th>
+                    </th>
+                    <th>
+                        Android programs
+                    </th>
+                    <th>
+                    </th>
+                    <th class="last">
+                    </th>
+                </tr>
+                <tr class="odd-row">
+                    <th class="first">
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Version
+                    </th>
+                    <th>
+                        Num. Pairs
+                    </th>
+                    <th class="last">
+                        Average LOC
+                    </th>
+                </tr>
+                <tr>
+                    <td rowspan="5" class="first">
+						<p class="apps" style="padding-bottom: 80px;">
+                            <a >Social Network</a></p>
+                    </td>
+                    <td>
+                        <p align="center">
+                            <a href="https://github.com/chrislacy/TweetLanes/">
+                                TweetLanes</a></p>
+                    </td>
+                    <td>
+                        <a href="https://github.com/chrislacy/TweetLanes/releases/tag/v1.2.1-release">
+                            1.2.1-release
+</a>; <a href="https://github.com/chrislacy/TweetLanes/releases/tag/v1.3.0-beta.1">
+                                1.3.0beta1
+</a>; <a href="https://github.com/chrislacy/TweetLanes/releases/tag/v1.3.0-beta.4">
+                                    1.3.0beta4
+</a>; <a href="https://github.com/chrislacy/TweetLanes/releases/tag/v1.3.0-release">
+                                        1.3.0release
+</a>; <a href="https://github.com/chrislacy/TweetLanes/releases/tag/v1.4.0-beta.1">
+                                            1.4.0beta1
+</a>;
+                        <br>
+                        <a href="https://github.com/chrislacy/TweetLanes/releases/tag/v1.4.0-beta.2">
+                            1.4.0beta2
+</a>; <a href="https://github.com/chrislacy/TweetLanes/releases/tag/v1.4.0-release">
+                                1.4.0release
+</a>; <a href="http://www.dimap.ufrn.br/~neliocacho/Aplicacoes_NET/Libraries/DirectShowLib/DirectShowLibV2-0.zip">
+                                    
+                    </td>
+                    <td>
+                        6
+                    </td>
+                    <td class="last">
+                        26.022,33
+                    </td>
+                </tr>
+                <tr class="odd-row">
+                    <td class="first">
+                        <p align="center">
+                            <a href="https://github.com/mariotaku/twidere/">Twidere
+                                <br>
+                                </a></p>
+                    </td>
+                    <td>
+                        <a href="https://github.com/mariotaku/twidere/releases/tag/0.2.9.7-update1">
+                            0.2.9.7update1
+</a>; <a href="https://github.com/mariotaku/twidere/releases/tag/0.2.9.8">
+                                0.2.9.8
+</a>;
+<a href="https://github.com/mariotaku/twidere/releases/tag/0.2.9.8-update2">
+                                0.2.9.8update2
+</a>;
+<a href="https://github.com/mariotaku/twidere/releases/tag/0.2.9.9">
+                                0.2.9.9
+</a>;
+<a href="https://github.com/mariotaku/twidere/releases/tag/0.2.9.10">
+                                0.2.9.10
+</a>;
+<a href="https://github.com/mariotaku/twidere/releases/tag/0.2.9.11">
+                                0.2.9.11
+</a>;
+<a href="https://github.com/mariotaku/twidere/releases/tag/0.2.9.12">
+                                0.2.9.12
+
+</a>;
+                    </td>
+                    <td>
+                        6
+                    </td>
+                    <td class="last">
+                        75.765,66
+                    </td>
+                </tr>
+                <tr>
+                    <td class="first">
+                        <p align="center">
+                            <a href="https://github.com/oshepherd/Impeller/">Impeller</a></p>
+                    </td>
+                    <td>
+                        <a href="https://github.com/oshepherd/Impeller/releases/tag/v0.7.0">
+                            0.7.0
+</a>; <a href="https://github.com/oshepherd/Impeller/releases/tag/v0.8.2">
+                                0.8.2
+</a>;
+                        <br>
+                        <a href="https://github.com/oshepherd/Impeller/releases/tag/v0.8.5">
+                            0.8.5
+</a>; <a href="https://github.com/oshepherd/Impeller/releases/tag/v0.8.6">
+                                0.8.6
+</a>;
+                        <br>
+                        <a href="https://github.com/oshepherd/Impeller/releases/tag/v0.9.5">
+                            0.9.5
+</a>; <a href="https://github.com/oshepherd/Impeller/releases/tag/v0.9.5a">
+                                0.9.5a
+</a>;
+                        <br>
+                        <a href="https://github.com/oshepherd/Impeller/releases/tag/v0.9.5b">
+                            0.9.5b
+</a>; 
+                    </td>
+                    <td>
+                        6
+                    </td>
+                    <td class="last">
+                        8.930,66
+                    </td>
+                </tr>
+                <tr class="odd-row">
+                    <td class="first">
+                        <p align="center">
+                            <a href="https://github.com/andstatus/andstatus">
+                                Andstatus</a></p>
+                    </td>
+                    <td>
+                        <a href="https://github.com/andstatus/andstatus/releases/tag/AndStatus-6.3">
+                            6.3
+</a>; <a href="http://www.dimap.ufrn.br/~neliocacho/Aplicacoes_NET/Libraries/SmartIrc4net/SmartIrc4net-0.3.0.zip">
+                                7.0
+</a>; <a href="https://github.com/andstatus/andstatus/releases/tag/AndStatus-7.1">
+                                    7.1
+</a>; <a href="https://github.com/andstatus/andstatus/releases/tag/AndStatus-7.1">
+                                        8.0
+</a>;
+<a href="https://github.com/andstatus/andstatus/releases/tag/AndStatus-7.1">
+                                        8.1
+</a>;
+<a href="https://github.com/andstatus/andstatus/releases/tag/AndStatus-8.4">
+                                        8.2
+</a>;
+<a href="https://github.com/andstatus/andstatus/releases/tag/AndStatus-8.4">
+                                        8.4
+</a>;
+                    </td>
+                    <td>
+                        6
+                    </td>
+                    <td class="last">
+                        20.130,50
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="first">
+                        <p style="font-weight: bold;">
+                            SubTotal</p>
+                    </td>
+                    <td>
+                        24
+                    </td>
+                    <td class="last">
+                        785.095,00
+                    </td>
+                </tr>
+                <tr class="odd-row">
+                    <td rowspan="5" class="first">
+                        <p class="apps" style="padding-bottom: 80px;">
+                            <a >Communication</a></p>
+                    </td>
+                    <td>
+                        <p align="center">
+                            <a href="https://github.com/guardianproject/ChatSecureAndroid/">
+                                ChatSecure
+                                <br>
+                                </a></p>
+                    </td>
+                    <td>
+                        <a href="https://github.com/guardianproject/ChatSecureAndroid/releases/tag/12.7.1">
+                            12.7.1
+</a>; <a href="https://github.com/guardianproject/ChatSecureAndroid/releases/tag/13.0.3">
+                                13.0.3
+</a>; <a href="https://github.com/guardianproject/ChatSecureAndroid/releases/tag/13.0.4">
+                                    13.0.4
+</a>; <a href="https://github.com/guardianproject/ChatSecureAndroid/releases/tag/13.0.6">
+                                        13.0.6
+</a>; <a href="https://github.com/guardianproject/ChatSecureAndroid/releases?after=13.0.9">
+                                            13.0.9
+</a>;
+ <a href="https://github.com/guardianproject/ChatSecureAndroid/releases/tag/13.2.0-alpha-6">
+                                            13.2.0alpha6
+</a>;
+ <a href="https://github.com/guardianproject/ChatSecureAndroid/releases/tag/13.2.0-beta-1">
+                                            13.2.0beta1
+</a>;
+                    </td>
+                    <td>
+                        6
+                    </td>
+                    <td class="last">
+                        34.522,00
+                    </td>
+                </tr>
+                <tr>
+                    <td class="first">
+                        <p align="center">
+                            <a href="https://github.com/connectbot/connectbot">
+                                ConnectBot</a></p>
+                    </td>
+                    <td>
+                        <a href="https://github.com/connectbot/connectbot/releases/tag/connectbot_1.1">
+                            1.1
+</a>; <a href="https://github.com/connectbot/connectbot/releases/tag/connectbot_1.3">
+                                1.3
+</a>; <a href="https://github.com/connectbot/connectbot/releases/tag/connectbot_1.5.4">
+                                    1.5.4
+</a>; <a href="https://github.com/connectbot/connectbot/releases/tag/connectbot_1.6.1">
+                                        1.6.1
+</a>; <a href="https://github.com/connectbot/connectbot/releases/tag/connectbot_1.6.2">
+                                            1.6.2
+</a>;
+<a href="https://github.com/connectbot/connectbot/releases/tag/v1.7.1">
+                                            1.7.1
+</a>;
+<a href="https://github.com/connectbot/connectbot/releases/tag/git-master-2014-03-02_12-38-08">
+                                           2014-03-02-12-38-08
+</a>;
+                    </td>
+                    <td>
+                        6
+                    </td>
+                    <td class="last">
+                        31.666,16
+                    </td>
+                </tr>
+                <tr class="odd-row">
+                    <td class="first">
+                        <p align="center">
+                            <a href="https://github.com/WhisperSystems/TextSecure/">
+                                TextSecure</a></p>
+                    </td>
+                    <td>
+                        <a href="https://github.com/WhisperSystems/TextSecure/releases/tag/2.0.4">
+                            2.0.4
+</a>; <a href="https://github.com/WhisperSystems/TextSecure/releases/tag/v2.0.5">
+                                2.0.5
+</a>; <a href="https://github.com/WhisperSystems/TextSecure/releases/tag/v2.0.6">
+                                    2.0.6
+</a>; <a href="https://github.com/WhisperSystems/TextSecure/releases/tag/v2.0.7">
+                                        2.0.7
+</a>; <a href="https://github.com/WhisperSystems/TextSecure/releases/tag/v2.0.8">
+                                            2.0.8
+</a>;
+ <a href="https://github.com/WhisperSystems/TextSecure/releases/tag/v2.1.2">
+                                        2.1.2
+</a>;
+ <a href="https://github.com/WhisperSystems/TextSecure/releases/tag/v2.1.6">
+                                        2.1.6
+</a>;
+                    </td>
+                    <td>
+                        6
+                    </td>
+                    <td class="last">
+                        46.521,50
+                    </td>
+                </tr>
+                <tr>
+                    <td class="first">
+                        <p align="center">
+                            <a href="https://github.com/adblockplus/adblockplusandroid/">
+                                Adblock Plus</a></p>
+                    </td>
+                    <td>
+                        <a href="https://github.com/adblockplus/adblockplusandroid/releases/tag/1.0">
+                            1.0
+</a>; <a href="https://github.com/adblockplus/adblockplusandroid/releases/tag/1.0.1">
+                                1.0.1
+</a>; <a href="https://github.com/adblockplus/adblockplusandroid/releases/tag/1.1">
+                                    1.1
+</a>; <a href="https://github.com/adblockplus/adblockplusandroid/releases/tag/1.1.1">
+                                        1.1.1
+</a>; <a href="https://github.com/adblockplus/adblockplusandroid/releases/tag/1.1.4">
+                                            1.1.4
+</a>; <a href="https://github.com/adblockplus/adblockplusandroid/releases/tag/1.2">
+                                                1.2
+</a>; <a href="https://github.com/adblockplus/adblockplusandroid/releases/tag/1.2.1">
+                                                    1.2.1
+</a>; 
+                    </td>
+                    <td>
+                        7
+                    </td>
+                    <td class="last">
+                        9.872,66
+                    </td>
+                </tr>
+                <tr class="odd-row">
+                    <td colspan="2" class="first">
+                        <p style="font-weight: bold;">
+                            SubTotal</p>
+                    </td>
+                    <td>
+                        24
+                    </td>
+                    <td class="last">
+                        735494
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="5" class="first">
+						<p class="apps" style="padding-bottom: 80px;">
+                            <a >Miscellaneous</a></p>
+                    </td>
+                    <td>
+                        <p align="center">
+                            <a href="https://github.com/k9mail/k-9">K9mail</a></p>
+                    </td>
+                    <td>
+                        <a href="https://github.com/k9mail/k-9/releases/tag/4.700">
+                            4.700
+</a>; <a href="https://github.com/k9mail/k-9/releases/tag/4.701">
+                                4.701
+</a>; <a href="https://github.com/k9mail/k-9/releases/tag/4.800">
+                                    4.800
+</a>; <a href="https://github.com/k9mail/k-9/releases/tag/4.801">
+                                        4.801
+</a>; <a href="https://github.com/k9mail/k-9/releases/tag/4.802">
+                                            4.802
+</a>;
+<a href="https://github.com/k9mail/k-9/releases/tag/4.803">
+                                            4.803
+</a>;
+<a href="https://github.com/k9mail/k-9/releases/tag/4.804">
+                                            4.804
+</a>;
+                    </td>
+                    <td>
+                        6
+                    </td>
+                    <td class="last">
+                        77.093,66
+                    </td>
+                </tr>
+                <tr class="odd-row">
+                    <td class="first">
+                        <p align="center">
+                            <a href="https://github.com/Anasthase/TintBrowser">
+                                TintBrowser</a></p>
+                    </td>
+                    <td>
+                        <a href="https://github.com/Anasthase/TintBrowser/releases/tag/1.3">
+                            1.3
+</a>; <a href="https://github.com/Anasthase/TintBrowser/releases/tag/1.4">
+                                1.4
+</a>; <a href="https://github.com/Anasthase/TintBrowser/releases/tag/1.5">
+                                    1.5
+</a>; <a href="https://github.com/Anasthase/TintBrowser/releases/tag/1.6">
+                                        1.6
+</a>;
+<a href="https://github.com/Anasthase/TintBrowser/releases/tag/1.6.1">
+                                        1.6.1
+</a>;
+<a href="https://github.com/Anasthase/TintBrowser/releases/tag/1.7">
+                                        1.7
+</a>;
+<a href="https://github.com/Anasthase/TintBrowser/releases/tag/1.8">
+                                        1.8
+</a>;
+                    </td>
+                    <td>
+                        6
+                    </td>
+                    <td class="last">
+                        11.347,83
+                    </td>
+                </tr>
+                <tr>
+                    <td class="first">
+                        <p align="center">
+                            <a href="https://github.com/geometer/FBReaderJ/">
+                                FBReader</a></p>
+                    </td>
+                    <td>
+                        <a href="https://github.com/geometer/FBReaderJ/releases/tag/1.10.0.4">
+                            1.10.0.4
+</a>; <a href="https://github.com/geometer/FBReaderJ/releases/tag/1.10.2">
+                                1.10.2
+</a>; <a href="https://github.com/geometer/FBReaderJ/releases/tag/1.10.3.2">
+                                    1.10.3.2
+</a>;
+<a href="https://github.com/geometer/FBReaderJ/releases/tag/2.0.4">
+                                    2.0.4
+</a>;
+<a href="https://github.com/geometer/FBReaderJ/releases/tag/2.0.5">
+                                    2.0.5
+</a>;
+<a href="https://github.com/geometer/FBReaderJ/releases/tag/2.0.5.2">
+                                    2.0.5.2
+</a>;
+<a href="https://github.com/geometer/FBReaderJ/releases/tag/2.0.6">
+                                    2.0.6
+</a>;
+                    </td>
+                    <td>
+                        6
+                    </td>
+                    <td class="last">
+                        64.183,66
+                    </td>
+                </tr>
+                <tr class="odd-row">
+                    <td class="first">
+                        <p align="center">
+                            <a href="https://github.com/cgeo/cgeo/">
+                                Cgeo</a></p>
+                    </td>
+                    <td>
+                        <a href="https://github.com/cgeo/cgeo/releases/tag/market_20140330">
+                            20140330
+</a>; <a href="https://github.com/cgeo/cgeo/releases/tag/market_20140331">
+                                20140331
+</a>; <a href="https://github.com/cgeo/cgeo/releases/tag/market_20140401">
+                                    20140401
+</a>; <a href="https://github.com/cgeo/cgeo/releases/tag/market_20140410-legacy">
+                                        20140410-legacy
+</a>; <a href="https://github.com/cgeo/cgeo/releases/tag/market_20140419">
+                                            20140419
+</a>; <a href="https://github.com/cgeo/cgeo/releases/tag/market_20140430">
+                                                20140430
+</a>;
+ <a href="https://github.com/cgeo/cgeo/releases/tag/market_20140514">
+                                                20140514
+</a>;
+                    </td>
+                    <td>
+                        6
+                    </td>
+                    <td class="last">
+                        49.783,33
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="first">
+                        <p style="font-weight: bold;">
+                            SubTotal</p>
+                    </td>
+                    <td>
+                        24
+                    </td>
+                    <td class="last">
+                        1.214.451,00
+                    </td>
+                </tr>
+                <tr class="odd-row">
+                    <td rowspan="5" class="first">
+                      <p class="apps" style="padding-bottom: 80px;">
+                            <a >News Reader/ Media</a></p>
+                    </td>
+                    <td>
+                        <p align="center">
+                            <a href="https://github.com/NineWorlds/serenity-android/">
+                                Serenity for Android</a></p>
+                    </td>
+                    <td>
+                        <a href="https://github.com/NineWorlds/serenity-android/releases/tag/v1.5.2">
+                            1.5.2
+</a>; <a href="https://github.com/NineWorlds/serenity-android/releases/tag/v1.5.3">
+                                1.5.3
+</a>; <a href="https://github.com/NineWorlds/serenity-android/releases/tag/v1.5.4">
+                                    1.5.4
+</a>; <a href="https://github.com/NineWorlds/serenity-android/releases/tag/v1.5.5">
+                                        1.5.5
+</a>; <a href="https://github.com/NineWorlds/serenity-android/releases/tag/v1.6.1">
+                                            1.6.1
+</a>; <a href="https://github.com/NineWorlds/serenity-android/releases/tag/v1.7.3">
+                                                1.7.3
+</a>; <a href="https://github.com/NineWorlds/serenity-android/releases/tag/v1.7.4a">
+                                                    1.7.4a
+</a>; <a href="http://www.dimap.ufrn.br/~neliocacho/Aplicacoes_NET/Stand-Alone/AscGenerator/ascgen2-0.9.1-source.zip">
+                             </a>;                         
+                    </td>
+                    <td>
+                        6
+                    </td>
+                    <td class="last">
+                        32616,83
+                    </td>
+                </tr>
+                <tr>
+                    <td class="first">
+                        <p align="center">
+                            <a href="https://github.com/QuantumBadger/RedReader/">
+                                RedReader</a></p>
+                    </td>
+                    <td>
+                        <a href="https://github.com/QuantumBadger/RedReader/releases/tag/v1.6.5">
+                            1.6.5
+</a>; <a href="https://github.com/QuantumBadger/RedReader/releases/tag/v1.6.9">
+                                1.6.9
+</a>; <a href="https://github.com/QuantumBadger/RedReader/releases/tag/v1.8.0">
+                                    1.8.0
+</a>; <a href="https://github.com/QuantumBadger/RedReader/releases/tag/v1.8.2">
+                                        1.8.2
+</a>; <a href="https://github.com/QuantumBadger/RedReader/releases/tag/v1.8.3">
+                                            1.8.3
+</a>; <a href="https://github.com/QuantumBadger/RedReader/releases/tag/v1.8.5.2">
+                                                1.8.5.2
+</a>; <a href="https://github.com/QuantumBadger/RedReader/releases/tag/v1.8.6.3">
+                                                    1.8.6.3
+</a>; 
+                    </td>
+                    <td>
+                        6
+                    </td>
+                    <td class="last">
+                        15592,16
+                    </td>
+                </tr>
+                <tr class="odd-row">
+                    <td class="first">
+                        <p align="center">
+                            <a href="https://github.com/vanilla-music/vanilla">Vanilla</a></p>
+                    </td>
+                    <td>
+                        <a href="https://github.com/vanilla-music/vanilla/releases/tag/0.9.17">
+                            0.9.17
+</a>; <a href="https://github.com/vanilla-music/vanilla/releases/tag/0.9.18">
+                                0.9.18
+</a>; <a href="https://github.com/vanilla-music/vanilla/releases/tag/0.9.20">
+                                    0.9.20
+</a>; <a href="https://github.com/vanilla-music/vanilla/releases/tag/0.9.21">
+                                        0.9.21
+</a>; <a href="https://github.com/vanilla-music/vanilla/releases/tag/0.9.22">
+                                            0.9.22
+</a>; <a href="https://github.com/vanilla-music/vanilla/releases/tag/0.9.23">
+                                                0.9.23
+</a>; <a href="https://github.com/vanilla-music/vanilla/releases/tag/0.9.24">
+                                                    0.9.24
+</a>; 
+                    </td>
+                    <td>
+                        6
+                    </td>
+                    <td class="last">
+                        10495
+                    </td>
+                </tr>
+                <tr>
+                    <td class="first">
+                        <p align="center">
+                            <a href="https://get.videolan.org/vlc-android/">
+                                VLC for Android</a></p>
+                    </td>
+                    <td>
+                        <a href="https://get.videolan.org/vlc-android/0.9.0/">
+                            0.9.0
+</a>; <a href="https://get.videolan.org/vlc-android/0.9.2/">
+                                0.9.2
+</a>; <a href="https://get.videolan.org/vlc-android/0.9.4/">
+                                    0.9.4
+</a>; <a href="https://get.videolan.org/vlc-android/0.9.6/">
+                                        0.9.6
+</a>; <a href="https://get.videolan.org/vlc-android/0.9.7.1/">
+                                            0.9.7.1
+</a>; <a href="https://get.videolan.org/vlc-android/0.9.9/">
+                                                0.9.9
+</a>; <a href="https://get.videolan.org/vlc-android/1.0.0/">
+                                                    1.0.0
+</a>; 
+                    </td>
+                    <td>
+                       6
+                    </td>
+                    <td class="last">
+                        27355,83
+                    </td>
+                </tr>
+                <tr class="odd-row">
+                    <td colspan="2" class="first">
+                        <p style="font-weight: bold;">
+                            SubTotal</p>
+                    </td>
+                    <td>
+                        24
+                    </td>
+                    <td class="last">
+                        516.359,00
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="first">
+                        <p style="font-weight: bold;">
+                            Total</p>
+                    </td>
+                    <td>
+                        96
+                    </td>
+                    <td class="last">
+                        3.251.399,00
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <nav id="tools" style="margin-top: 50px; text-align: justify;">
+				<p style="font-weight: bold;font-size: 16px; margin-bottom: 10px;">TOOLS</p>
+				<ul align="center">
+					<li><a href="http://www.antepedia.com/detail/p/275375393.html">EFlowMining</a></li>
+					<li><a href="http://www.campwoodsw.com/sourcemonitor.html">SourceMonitor</a></li>
+					<li><a href="http://www.sourcegear.com/diffmerge/">DiffMerge</a></li>
+				</li></ul>
+			</nav>
+    </div>
+</body>
+</html>
